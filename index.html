@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Crop Disease Detection</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<h2>Crop Disease Detection System</h2>
+
+<form action="result.jsp" method="post" onsubmit="return validate()">
+
+<label>Farmer Name</label>
+<input type="text" name="name" id="name">
+
+<label>Select Crop</label>
+<select name="crop">
+<option>Tomato</option>
+<option>Potato</option>
+<option>Rice</option>
+<option>Wheat</option>
+</select>
+
+<label>Symptom</label>
+<select name="symptom">
+<option>yellow spots</option>
+<option>brown spots</option>
+<option>white patches</option>
+<option>yellow leaves</option>
+</select>
+
+<button type="submit">Detect Disease</button>
+
+</form>
+
+</body>
+</html>
