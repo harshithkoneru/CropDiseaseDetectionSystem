@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Crop Disease Detection</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+
+<link rel="stylesheet" href="Style.css">
+
 </head>
 
 <body>
 
-<h2>Crop Disease Detection System</h2>
+<div class="container">
 
-<form action="result.jsp" method="post" onsubmit="return validate()">
+<h1>🌱 Crop Disease Detection System</h1>
+<p>Upload crop details to detect possible disease</p>
+
+<form action="api/result.jsp" method="post">
 
 <label>Farmer Name</label>
-<input type="text" name="name" id="name">
+<input type="text" name="farmer" required>
 
-<label>Select Crop</label>
+<label>Crop Name</label>
 <select name="crop">
-<option>Tomato</option>
-<option>Potato</option>
-<option>Rice</option>
-<option>Wheat</option>
+
+<option value="Rice">Rice</option>
+<option value="Wheat">Wheat</option>
+<option value="Tomato">Tomato</option>
+<option value="Potato">Potato</option>
+
 </select>
 
-<label>Symptom</label>
-<select name="symptom">
-<option>yellow spots</option>
-<option>brown spots</option>
-<option>white patches</option>
-<option>yellow leaves</option>
-</select>
+<label>Symptoms</label>
+<textarea name="symptoms" placeholder="Describe symptoms..." required></textarea>
 
 <button type="submit">Detect Disease</button>
 
 </form>
+
+</div>
 
 </body>
 </html>
