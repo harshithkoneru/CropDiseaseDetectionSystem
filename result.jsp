@@ -1,34 +1,60 @@
 <%@ page import="java.sql.*" %>
 
 <%
+
+String farmer=request.getParameter("farmer");
 String crop=request.getParameter("crop");
-String symptom=request.getParameter("symptom");
+String symptoms=request.getParameter("symptoms");
 
-Class.forName("com.mysql.jdbc.Driver");
+String disease="Unknown Disease";
 
-Connection con=DriverManager.getConnection(
-"jdbc:mysql://localhost:3306/cropdb",
-"root",
-"root");
-
-PreparedStatement ps=con.prepareStatement(
-"SELECT * FROM disease WHERE crop=? AND symptom=?");
-
-ps.setString(1,crop);
-ps.setString(2,symptom);
-
-ResultSet rs=ps.executeQuery();
-
-while(rs.next())
+if(symptoms.toLowerCase().contains("yellow"))
 {
-%>
-
-<h2>Disease Detected</h2>
-
-Crop : <%=rs.getString("crop")%><br>
-Disease : <%=rs.getString("disease_name")%><br>
-Solution : <%=rs.getString("solution")%><br>
-
-<%
+disease="Leaf Yellowing Disease";
 }
+else if(symptoms.toLowerCase().contains("spots"))
+{
+disease="Fungal Leaf Spot";
+}
+else if(symptoms.toLowerCase().contains("dry"))
+{
+disease="Crop Dry Rot";
+}
+
 %>
+
+<html>
+
+<head>
+
+<title>Detection Result</title>
+
+<link rel="stylesheet" href="../Style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Disease Detection Result</h1>
+
+<p><b>Farmer:</b> <%=farmer%></p>
+
+<p><b>Crop:</b> <%=crop%></p>
+
+<p><b>Symptoms:</b> <%=symptoms%></p>
+
+<h2>Detected Disease:</h2>
+
+<h3 style="color:red"><%=disease%></h3>
+
+<a href="../index.html">
+<button>Check Again</button>
+</a>
+
+</div>
+
+</body>
+
+</html>
